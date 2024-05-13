@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">Update Bio Data</h2>
+    <form method="post" action="/edit/{{ biodata.id }}" class="mt-3">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" id="name" placeholder="Name" value="{{ biodata.name }}">
+        </div>
+        <div class="mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input type="number" name="age" class="form-control" id="age" placeholder="Age" value="{{ biodata.age }}">
+        </div>
+        <div class="mb-3">
+            <label for="date_of_birth" class="form-label">Date of Birth</label>
+            <input type="date" name="date_of_birth" class="form-control" id="date_of_birth" placeholder="Date of Birth" value="{{ biodata.date_of_birth }}">
+        </div>
+        <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <select name="gender" class="form-select" id="gender">
+                <option value="M" {% if biodata.gender == 'M' %} selected {% endif %}>Male</option>
+                <option value="F" {% if biodata.gender == 'F' %} selected {% endif %}>Female</option>
+                <option value="O" {% if biodata.gender == 'O' %} selected {% endif %}>Other</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="phone_number" class="form-label">Phone Number</label>
+            <input type="text" name="phone_number" class="form-control" id="phone_number" placeholder="Phone Number" value="{{ biodata.phone_number }}">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" id="email" placeholder="Email" value="{{ biodata.email }}">
+        </div>
+        <div class="mb-3">
+            <label for="qualification" class="form-label">Qualification</label>
+            <input type="text" name="qualification" class="form-control" id="qualification" placeholder="Qualification" value="{{ biodata.qualification }}">
+        </div>
+        <div class="mb-3">
+            <label for="occupation" class="form-label">Occupation</label>
+            <input type="text" name="occupation" class="form-control" id="occupation" placeholder="Occupation" value="{{ biodata.occupation }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">Bio Data</h2>
+    <a href="/logout" class="btn btn-danger mt-3">Logout</a>
+    <a href="/edit_bio_data" class="btn btn-success mt-3">Add Bio Data</a>
+    <table class="table table-bordered table-striped mt-4">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Qualification</th>
+                <th>Occupation</th>
+                <th>Delete</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in bio_data %}
+            <tr>
+                <td>{{ data.name }}</td>
+                <td>{{ data.age }}</td>
+                <td>{{ data.date_of_birth }}</td>
+                <td>{{ data.get_gender_display }}</td>
+                <td>{{ data.phone_number }}</td>
+                <td>{{ data.email }}</td>
+                <td>{{ data.qualification }}</td>
+                <td>{{ data.occupation }}</td>
+                <td><a href="/delete/{{data.id}}" class="btn btn-danger">Delete</a></td>
+                <td><a href="/edit/{{data.id}}" class="btn btn-primary">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
